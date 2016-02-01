@@ -5,7 +5,7 @@ by Cathal Garvey, Copyright 2016, Licensed AGPLv3 or later.
 
 ### About
 
-![Godoc Badge](https://godoc.org/github.com/cathalgarvey/vcardgen?status.svg]
+![Godoc Badge](https://godoc.org/github.com/cathalgarvey/vcardgen?status.svg)
 
 This is just a vCard generator in Go, which isn't even entirely compliant.
 It is based upon [vCards JS](https://github.com/enesser/vCards-JS) by
