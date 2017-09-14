@@ -174,7 +174,7 @@ func (card *Vcard) GetFormattedString() string {
 	}
 	if card.WorkAddress != nil {
 		card.WorkAddress.Version = card.Version
-		fmtd += card.HomeAddress.getFormattedAddress(encodingPrefix)
+		fmtd += card.WorkAddress.getFormattedAddress(encodingPrefix)
 	}
 	if card.Title != "" {
 		fmtd += fmt.Sprintf("TITLE%s:%s\r\n", encodingPrefix, encodeString(card.Title))

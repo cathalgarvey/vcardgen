@@ -10,6 +10,7 @@ import (
 
 func mkSimpleCard() (*Vcard, error) {
 	var err error
+	var addr VcardAddress
 	v := New()
 	v.FirstName = "Cathal"
 	v.LastName = "Garvey"
@@ -19,6 +20,17 @@ func mkSimpleCard() (*Vcard, error) {
 	v.Birthday, err = time.Parse(time.RFC822, "12 Nov 85 01:10 GMT")
 	v.Note = "This is meee"
 	v.Source = "Source code of vcardgen."
+
+	addr = VcardAddress{
+		Label:         "Cathal Works Inc",
+		Street:        "First Street",
+		City:          "Foobarcity",
+		StateProvince: "FB",
+		CountryRegion: "US",
+		PostalCode:    "12345-678",
+	}
+	v.WorkAddress = &addr
+
 	if err != nil {
 		return nil, err
 	}
@@ -52,6 +64,8 @@ func TestSimpleCard(t *testing.T) {
 			assert.Equal(t, line, "NOTE:This is meee")
 		case "SO":
 			assert.Equal(t, line, "SOURCE:Source code of vcardgen.")
+		case "AD":
+			assert.Equal(t, line, "ADR;TYPE=;LABEL=Cathal Works Inc\":;;First Street;Foobarcity;FB;12345-678;US")
 		}
 	}
 	// TODO Test V3
